@@ -1,8 +1,8 @@
 import operations
 
-records = []
-
 def main():
+    records = []
+
     
     while True:
         print("\nStructured Data Manager")
@@ -15,7 +15,7 @@ def main():
         print("7. Sort Records")
         print("8. Exit Program")
 
-        choice = input("Enter your Choice: ")
+        choice = input("Enter your Choice: ").strip()
 
         if choice == "1":
             operations.add_record(records)

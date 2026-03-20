@@ -1,9 +1,10 @@
 import helpers
 
 def add_record(records):
-    name = input("Enteer name: ")
+
+    name = input("Enter name: ")
     category = input("Enter category: ")
-    price = input("Enter prince: ")
+    price = input("Enter price: ")
     quantity = input("Enter quantity: ")
     status = input("Enter status: ")
 
@@ -21,6 +22,7 @@ def add_record(records):
     records.append(record)
     print("Record added successfully!")
     helpers.print_record(record)
+    return True
 
 
 def view_records(records):
