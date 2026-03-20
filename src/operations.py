@@ -1,3 +1,5 @@
+import helpers
+
 def add_record(records):
     name = input("Enteer name: ")
     category = input("Enter category: ")
@@ -5,7 +7,7 @@ def add_record(records):
     quantity = input("Enter quantity: ")
     status = input("Enter status: ")
 
-    current_id = len(records) + 1
+    current_id = helpers.generate_id(records)
 
     record = {
         "id": current_id,
@@ -18,6 +20,7 @@ def add_record(records):
     
     records.append(record)
     print("Record added successfully!")
+    helpers.print_record(record)
 
 
 def view_records(records):
@@ -26,7 +29,7 @@ def view_records(records):
         return
     
     for record in records:
-        print(record)
+        helpers.print_record(record)
 
 
 def search_record(records):
@@ -42,7 +45,7 @@ def search_record(records):
 
     for record in records:
         if str(record[field]) == value:
-            print(record)
+            helpers.print_record(record)
             found = True
     
     if not found:
@@ -66,6 +69,7 @@ def update_record(records):
 
             record[field] = new_value
             print("Record updated successfully!")
+            helpers.print_record(record)
             found = True
             break
 
@@ -103,8 +107,30 @@ def filter_records(records):
     
     for record in records:
         if str(record[field]) == value:
-            print(record)
+            helpers.print_record(record)
             found = True
 
     if not found:
         print("No record found with the given value.")
+
+
+def sort_records(records):
+
+    field = input("Sort by name/category/price/quantity/status: ")
+
+    if len(records) > 0 and field not in records[0]:
+        print("Invalid field. Please try again.")
+        return
+    
+    order = input("Enter the sort order (asc/desc): ")
+
+    def get_value(record):
+        return record[field]
+    
+    if order == "desc":
+        sorted_records = sorted(records, key=get_value, reverse=True)
+    else:
+        sorted_records = sorted(records, key=get_value)
+
+    for record in sorted_records:
+        helpers.print_record(record)
