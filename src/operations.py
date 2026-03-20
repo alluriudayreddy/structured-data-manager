@@ -18,3 +18,12 @@ def add_record(records):
     
     records.append(record)
     print("Record added successfully!")
+
+
+def view_records(records):
+    if len(records) == 0:
+        print("No record found.")
+        return
+    
+    for record in records:
+        print(record)
