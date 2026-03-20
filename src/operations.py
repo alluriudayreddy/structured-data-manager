@@ -47,4 +47,27 @@ def search_record(records):
     
     if not found:
         print("No record found with the given value.")
-        
+
+
+def update_record(records):
+    record_id = input("Enter the ID of the record you want to update: ")
+    found = False
+
+    for record in records:
+        if str(record["id"]) == record_id:
+
+            field = input("Enter the field you want to update name/category/price/quantity/status: ")
+             
+            if field not in record:
+                print("Invalid field. Pllease try again.")
+                return
+            
+            new_value = input("Enter the new value: ")
+
+            record[field] = new_value
+            print("Record updated successfully!")
+            found = True
+            break
+
+    if not found:
+        print("No record found with the given ID.")
