@@ -1,4 +1,4 @@
-def add_records(record):
+def add_record(records):
     name = input("Enteer name: ")
     category = input("Enter category: ")
     price = input("Enter prince: ")
@@ -8,14 +8,13 @@ def add_records(record):
     current_id = len(records) + 1
 
     record = {
-        "id" = current_id,
-        "name" = name,
-        "category" = category,
-        "price" = price,
-        "quantity" = quantity,
-        "status" = status,
+        "id": current_id,
+        "name": name,
+        "category": category,
+        "price": price,
+        "quantity": quantity,
+        "status": status,
     }
     
     records.append(record)
     print("Record added successfully!")
-    
