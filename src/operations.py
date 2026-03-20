@@ -27,3 +27,24 @@ def view_records(records):
     
     for record in records:
         print(record)
+
+
+def search_record(records):
+    field = input("search by id/name/category/price/quantity/status: ")
+
+    if len(records) > 0 and field not in records[0]:
+        print("Invalid field. Please try again.")
+        return
+    
+    value = input("Enter the Value you want to search for: ")
+
+    found = False
+
+    for record in records:
+        if str(record[field]) == value:
+            print(record)
+            found = True
+    
+    if not found:
+        print("No record found with the given value.")
+        
