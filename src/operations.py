@@ -71,3 +71,40 @@ def update_record(records):
 
     if not found:
         print("No record found with the given ID.")
+
+
+def delete_record(records):
+
+    record_id = input("Enter the ID of the record you want to delete: ")
+    found = False
+
+    for record in records:
+        if str(record["id"]) == record_id:
+            records.remove(record)
+            print("Record deleted successfully!")
+            found = True
+            break
+
+    if not found:
+        print("No record found with the given ID.")
+
+
+def filter_records(records):
+
+    field = input("Filter by name/category/price/quantity/status: ")
+
+    if len(records) > 0 and field not in records[0]:
+        print("Invalid field. Please try again.")
+        return
+    
+    value = input("Enter the value you want to filter by: ")
+
+    found = False
+    
+    for record in records:
+        if str(record[field]) == value:
+            print(record)
+            found = True
+
+    if not found:
+        print("No record found with the given value.")
